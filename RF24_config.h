@@ -135,7 +135,11 @@
   #define PRIPSTR "%s"
 
 #elif defined(ARDUINO) && ! defined(__arm__) && !defined (__ARDUINO_X86__) || defined(XMEGA)
-	#include <avr/pgmspace.h>
+	#if (defined(__AVR__))
+	#include <avr\pgmspace.h>
+	#else
+	#include <pgmspace.h>
+	#endif
 	#define PRIPSTR "%S"
 #else
   #if ! defined(ARDUINO) // This doesn't work on Arduino DUE
